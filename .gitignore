@@ -27,3 +27,17 @@ Thumbs.db
 
 # Miscellaneous
 *.swp
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3  # Ignore SQLite database file
+
+# Pytest
+.cache
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
