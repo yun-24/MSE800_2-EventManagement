@@ -33,7 +33,13 @@ Thumbs.db
 *.pot
 *.pyc
 *.pyo
-*.sqlite3  # Ignore SQLite database file
+
+# Ignore SQLite database file
+*.sqlite3
+*.db
+
+## Ignore ckedtor media
+media/
 
 # Pytest
 .cache
