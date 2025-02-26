@@ -7,7 +7,7 @@
 <ul>
     {% for event in events %}
     <li>
-        <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+        <a href="{% url 'events:event_detail' event.pk %}">{{ event.title }}</a>
         on {{ event.date_time }}
     </li>
     {% empty %}
