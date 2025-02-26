@@ -22,7 +22,7 @@ from events import views as event_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('users/', include('users.urls')),
+    path('users/', include('users.urls')),
     path('events/', include('events.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', event_views.event_list, name='index'),  # Index route points to event_list
