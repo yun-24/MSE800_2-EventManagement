@@ -26,7 +26,7 @@ def create_event(request):
             event = form.save(commit=False)
             event.organizer = request.user
             event.save()
-            return redirect('event_detail', pk=event.pk)
+            return redirect('events:event_detail', pk=event.pk)
     else:
         form = EventForm()
     return render(request, 'events/create_event.html', {'form': form})
@@ -39,7 +39,7 @@ def edit_event(request, pk):
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
-            return redirect('event_detail', pk=event.pk)
+            return redirect('events:event_detail', pk=event.pk)
     else:
         form = EventForm(instance=event)
     return render(request, 'events/edit_event.html', {'form': form, 'event': event})

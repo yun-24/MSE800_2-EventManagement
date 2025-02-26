@@ -11,7 +11,7 @@
 <p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
 
 {% if user == event.organizer %}
-<a href="{% url 'edit_event' event.pk %}">Edit Event</a>
+<a href="{% url 'events:edit_event' event.pk %}">Edit Event</a>
 {% endif %}
 
 {% endblock %}
