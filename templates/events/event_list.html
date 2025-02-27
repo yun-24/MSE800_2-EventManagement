@@ -9,6 +9,8 @@
     <li>
         <a href="{% url 'events:event_detail' event.pk %}">{{ event.title }}</a>
         on {{ event.date_time }}
+        <br>
+        Attendees: {{ event.attendees.count }}
     </li>
     {% empty %}
     <li>No events available.</li>

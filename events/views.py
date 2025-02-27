@@ -15,7 +15,19 @@ def event_list(request):
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    return render(request, 'events/event_detail.html', {'event': event})
+    attendees = event.attendees.all()
+
+    if request.method == 'POST':
+        if request.POST.get('action') == 'attend':
+            event.attendees.add(request.user)
+        elif request.POST.get('action') == 'unattend':
+            event.attendees.remove(request.user)
+        return redirect('events:event_detail', pk=event.pk)
+
+    return render(request, 'events/event_detail.html', {
+        'event': event,
+        'attendees': attendees,
+    })
 
 
 @login_required

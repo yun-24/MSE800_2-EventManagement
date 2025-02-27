@@ -10,8 +10,28 @@
 {{ event.description|safe }}
 <p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
 
+<h3>Attendees ({{ attendees.count }}):</h3>
+<ul>
+    {% for attendee in attendees %}
+    <li>{{ attendee.username }}</li>
+    {% empty %}
+    <li>No attendees yet. Be the first to join!</li>
+    {% endfor %}
+</ul>
+
 {% if user == event.organizer %}
 <a href="{% url 'events:edit_event' event.pk %}">Edit Event</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+<form method="post">
+    {% csrf_token %}
+    {% if user in attendees %}
+    <button type="submit" name="action" value="unattend">Unattend</button>
+    {% else %}
+    <button type="submit" name="action" value="attend">Attend</button>
+    {% endif %}
+</form>
 {% endif %}
 
 {% endblock %}
