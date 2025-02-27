@@ -11,12 +11,23 @@
     <a href="{% url 'events:event_list' %}">Home</a>
     {% if user.is_authenticated %}
     <a href="{% url 'events:create_event' %}">Create Event</a>
+    <a href="{% url 'users:personal_center' %}">Personal Center</a>
     <a href="{% url 'users:logout' %}">Logout</a>
     {% else %}
     <a href="{% url 'users:login' %}">Login</a>
     <a href="{% url 'users:register' %}">Sign Up</a>
     {% endif %}
 </nav>
+
+<!-- Display messages -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="container">
     {% block content %}
     {% endblock %}
