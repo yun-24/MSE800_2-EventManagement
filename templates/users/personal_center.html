@@ -15,4 +15,16 @@
     <li>No events created by you.</li>
     {% endfor %}
 </ul>
+
+<h3>Events You Are Attending</h3>
+<ul>
+    {% for event in attending_events %}
+    <li>
+        <a href="{% url 'events:event_detail' event.pk %}">{{ event.title }}</a> - {{ event.date_time }}
+    </li>
+    {% empty %}
+    <li>You are not attending any events.</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from events.models import Event
 
 def register(request):
     if request.method == 'POST':
@@ -27,3 +28,17 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('events:event_list')
+
+
+def personal_center(request):
+    if request.user.is_authenticated:
+        user_events = Event.objects.filter(organizer=request.user)
+        attending_events = Event.objects.filter(attendees=request.user)
+        return render(request, 'users/personal_center.html',
+                      {'username': request.user.username,
+                       'user_events': user_events,
+                       'attending_events': attending_events
+                       })
+    else:
+        # Handle the case where the user is not logged in
+        return redirect('events:event_list')
