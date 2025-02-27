@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Personal Center{% endblock %}
+
+{% block content %}
+<h2>Personal Center</h2>
+<p><strong>Username:</strong> {{ username }}</p>
+<h3>Events Created by You</h3>
+<ul>
+    {% for event in user_events %}
+    <li>
+        <a href="{% url 'events:event_detail' event.pk %}">{{ event.title }}</a> - {{ event.date_time }}
+    </li>
+    {% empty %}
+    <li>No events created by you.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

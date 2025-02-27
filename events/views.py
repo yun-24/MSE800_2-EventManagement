@@ -43,3 +43,12 @@ def edit_event(request, pk):
     else:
         form = EventForm(instance=event)
     return render(request, 'events/edit_event.html', {'form': form, 'event': event})
+
+
+def personal_center(request):
+    if request.user.is_authenticated:
+        user_events = Event.objects.filter(organizer=request.user)
+        return render(request, 'users/personal_center.html', {'username': request.user.username, 'user_events': user_events})
+    else:
+        # Handle the case where the user is not logged in
+        return redirect('events:event_list')
