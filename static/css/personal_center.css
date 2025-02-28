@@ -1,0 +1,75 @@
+.personal-center-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    margin-top: 20px;
+}
+
+.events-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.events-section h3 {
+    color: #188f98;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #f0f0f0;
+}
+
+.personal-info {
+    grid-column: 1 / -1;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+}
+
+.event-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    background: #f8f8f8;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.event-item:hover {
+    background: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.event-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+.event-item a:hover {
+    transform: translateY(-2px);
+}
+
+.event-item h4 {
+    margin: 0 0 5px;
+}
+
+.event-item p {
+    margin: 0;
+}
+
+.personal-info h2 {
+    border: none;
+}

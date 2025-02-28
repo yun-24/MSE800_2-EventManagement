@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Events{% endblock %}
-
 {% block content %}
 <h1>Upcoming Events</h1>
-<ul>
+<div class="event-grid">
     {% for event in events %}
-    <li>
-        <a href="{% url 'events:event_detail' event.pk %}">{{ event.title }}</a>
-        on {{ event.date_time }}
-        <br>
-        Attendees: {{ event.attendees.count }}
-    </li>
+    <a href="{% url 'events:event_detail' event.pk %}" class="event-card">
+        <h2 class="event-title">{{ event.title }}</h2>
+        <div class="event-info">
+            <p>📅 {{ event.date_time }}</p>
+            <p>📍 {{ event.location }}</p>
+        </div>
+        <p class="event-description">{{ event.description|striptags|truncatewords:30 }}</p>
+    </a>
     {% empty %}
-    <li>No events available.</li>
+    <p>No events available.</p>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

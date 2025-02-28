@@ -1,37 +1,51 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ event.title }}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>{{ event.title }}</h2>
-<p><strong>Date and Time:</strong> {{ event.date_time }}</p>
-<p><strong>Location:</strong> {{ event.location }}</p>
-<p><strong>Description:</strong></p>
-{{ event.description|safe }}
-<p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
+<div class="event-detail-container">
+    <h2 class="event-title">{{ event.title }}</h2>
 
-<h3>Attendees ({{ attendees.count }}):</h3>
-<ul>
-    {% for attendee in attendees %}
-    <li>{{ attendee.username }}</li>
-    {% empty %}
-    <li>No attendees yet. Be the first to join!</li>
-    {% endfor %}
-</ul>
+    <div class="event-description">
+        {{ event.description|safe }}
+    </div>
 
-{% if user == event.organizer %}
-<a href="{% url 'events:edit_event' event.pk %}">Edit Event</a>
-{% endif %}
+    <div class="event-info">
+        <p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Date and Time:</strong> {{ event.date_time }}</p>
+    </div>
 
-{% if user.is_authenticated %}
-<form method="post">
-    {% csrf_token %}
-    {% if user in attendees %}
-    <button type="submit" name="action" value="unattend">Unattend</button>
-    {% else %}
-    <button type="submit" name="action" value="attend">Attend</button>
-    {% endif %}
-</form>
-{% endif %}
+    <div class="attendees-section">
+        <h3>Attendees ({{ attendees.count }}):</h3>
+        <ul class="attendees-list">
+            {% for attendee in attendees %}
+            <li>{{ attendee.username }}</li>
+            {% empty %}
+            <li>No attendees yet. Be the first to join!</li>
+            {% endfor %}
+        </ul>
+    </div>
 
+    <div class="button-container">
+        {% if user.is_authenticated %}
+            {% if user == event.organizer %}
+            <a href="{% url 'events:edit_event' event.pk %}" class="edit-button">Edit Event</a>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {% if user in attendees %}
+                <button type="submit" name="action" value="unattend">Unattend</button>
+                {% else %}
+                <button type="submit" name="action" value="attend">Attend</button>
+                {% endif %}
+            </form>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
