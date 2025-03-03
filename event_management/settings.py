@@ -45,6 +45,9 @@ INSTALLED_APPS = [
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_RESTRICT_BY_USER = True  # Restrict each user to only see their own uploads
+CKEDITOR_ALLOW_NONIMAGE_FILES = False  # Restricts uploads to images only
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
