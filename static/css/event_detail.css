@@ -71,7 +71,7 @@
     gap: 10px;
 }
 
-button, .edit-button {
+button, .edit-button, .button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -99,7 +99,14 @@ button[value="unattend"] {
     display: inline-block;  /* Needed for width to work on anchor tag */
 }
 
-button:hover, .edit-button:hover {
+.delete-button {
+    background-color: #c42956;
+    color: white;
+    text-decoration: none;
+    display: inline-block;  /* Needed for width to work on anchor tag */
+}
+
+button:hover, .edit-button:hover, .button:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }

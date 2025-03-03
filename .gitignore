@@ -38,6 +38,9 @@ Thumbs.db
 *.sqlite3
 *.db
 
+# Ignore migrations dir
+**/migrations/
+
 ## Ignore ckedtor media
 media/
 

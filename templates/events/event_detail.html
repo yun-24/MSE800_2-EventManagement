@@ -37,6 +37,15 @@
             {% if user == event.organizer %}
             <a href="{% url 'events:edit_event' event.pk %}" class="edit-button">Edit Event</a>
             {% endif %}
+
+            <!-- Show delete button only to admin users -->
+            {% if user.is_staff %}
+            <form method="post" action="{% url 'events:delete_event' event.pk %}" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                {% csrf_token %}
+                <button type="submit" class="button delete-button">Delete</button>
+            </form>
+            {% endif %}
+
             <form method="post">
                 {% csrf_token %}
                 {% if user in attendees %}

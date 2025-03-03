@@ -10,7 +10,7 @@
             <p>📅 {{ event.date_time }}</p>
             <p>📍 {{ event.location }}</p>
         </div>
-        <p class="event-description">{{ event.description|striptags|truncatewords:30 }}</p>
+        <p class="event-description">{{ event.description|safe|truncatewords:30 }}</p>
     </a>
     {% empty %}
     <p>No events available.</p>
