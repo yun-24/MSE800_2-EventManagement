@@ -3,7 +3,7 @@ nav {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #188f98; /* Light gray background for contrast */
     border-bottom: 1px solid #ccc; /* Separating line between navigation and content */
     border-radius: 0 0 10px 10px; /* Rounded corners for buttons */
@@ -13,6 +13,8 @@ nav {
 /* Home button specific style */
 nav a:first-child {
     margin-right: 60px;
+    margin-left: 15px;
+    margin-right: 25px;
 }
 nav a:first-child:hover {
 
@@ -24,8 +26,9 @@ nav a {
     padding: 5px 10px; /* Padding around the text */
     border-radius: 5px; /* Rounded corners for buttons */
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 800;
+    margin-left: 15px;
     margin-right: 15px;
 }
 /* Navigation button link hover effect */

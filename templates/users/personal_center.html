@@ -8,13 +8,13 @@
 
 {% block content %}
 <div class="personal-info">
-    <h2>Personal Center</h2>
-    <p><strong>Username:</strong> {{ username }}</p>
+    <h2>Personal Center<br>Whārangi Whaiaro</h2>
+    <p><strong>Username<br>Ingoa Kaiwhakamahi:</strong> {{ username }}</p>
 </div>
 
 <div class="personal-center-grid">
     <div class="events-section">
-        <h3>Events Created by You</h3>
+        <h3>Events Created by You<br>Ō Kaupapa</h3>
         <ul class="event-list">
             {% for event in user_events %}
             <li class="event-item">
@@ -24,13 +24,13 @@
                 </a>
             </li>
             {% empty %}
-            <li>No events created by you.</li>
+            <li>No events created by you</li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="events-section">
-        <h3>Events You Attended</h3>
+        <h3>Events You Attended<br>Kaupapa Kua Tae Atu Koe</h3>
         <ul class="event-list">
             {% for event in attending_events %}
             <li class="event-item">

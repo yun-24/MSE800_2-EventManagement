@@ -10,14 +10,14 @@
 {% block content %}
 <div class="auth-container">
     <div class="auth-header">
-        <h2>Log in</h2>
+        <h2>Log in<br>Takiuru</h2>
     </div>
     <form method="post" class="auth-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Log in</button>
+        <button type="submit">Log in / Takiuru</button>
         <div class="auth-switch">
-            Don't have an account? <a href="{% url 'users:register' %}">Sign up</a>
+            Don't have an account? <a href="{% url 'users:register' %}">Sign up/Whakauru</a>
         </div>
     </form>
 </div>
