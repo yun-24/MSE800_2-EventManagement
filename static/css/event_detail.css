@@ -24,6 +24,12 @@
     color: #333;
 }
 
+.event-description img {
+    max-width: 750px;
+    width: 100%;
+    height: auto;
+}
+
 .event-info {
     margin: 20px 0;
 }

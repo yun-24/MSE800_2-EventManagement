@@ -13,6 +13,7 @@
 <nav>
     <a href="{% url 'events:event_list' %}">Home<br>Kāinga</a>
     {% if user.is_authenticated %}
+<<<<<<< Updated upstream
         <a href="{% url 'events:create_event' %}">Create Event<br>Waihanga Hui</a>
     <div class="right-buttons">
         <a href="{% url 'users:personal_center' %}" >Personal Center<br>Whārangi Whaiaro</a>
@@ -27,6 +28,22 @@
                 <a href="{% url 'users:register' %}" >Sign Up<br>Whakauru</a>
             {% endblock %}
         </div>
+=======
+        <a href="{% url 'events:create_event' %}">Create Event</a>
+        <div class="right-buttons">
+            <a href="{% url 'users:personal_center' %}" >Personal Center</a>
+            <a href="{% url 'users:logout' %}" >Logout</a>
+        </div>
+    {% else %}
+         <div class="right-buttons">
+            {% block nav_login %}
+            <a href="{% url 'users:login' %}" >Login</a>
+            {% endblock %}
+            {% block nav_register %}
+            <a href="{% url 'users:register' %}" >Sign Up</a>
+            {% endblock %}
+         </div>
+>>>>>>> Stashed changes
     {% endif %}
 </nav>
 
