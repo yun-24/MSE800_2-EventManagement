@@ -42,15 +42,34 @@ Users can sign up, log in, create events, and view a list of upcoming events.
     python manage.py migrate
     ```
 
-4**Run the development server**:
+4. **Run the development server**:
 
     ```shell
     python manage.py runserver
     ```
 
-5**Access the application**:
+5. **Access the application**:
 
    Open your web browser and navigate to `http://127.0.0.1:8000/`.
+
+### Deploy (WSGI)
+
+1. Set Environment Variables: Configure DEBUG=False in settings.
+
+2. Collect Static Files
+```shell
+python manage.py collectstatic
+```
+
+3. Install Gunicorn.
+```shell
+ pip install gunicorn
+```
+
+4. Run server.
+```shell
+gunicorn event_management.wsgi:application
+```
 
 ## **Usage**
 
