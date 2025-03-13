@@ -1,0 +1,119 @@
+.event-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    min-height: 500px;
+}
+
+.event-title {
+    color: #188f98;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.event-description {
+    margin: 20px 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.event-description img {
+    max-width: 750px;
+    width: 100%;
+    height: auto;
+}
+
+.event-info {
+    margin: 20px 0;
+}
+
+.event-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.event-info strong {
+    color: #188f98;
+    margin-right: 10px;
+}
+
+.attendees-section {
+    margin: 30px 0;
+}
+
+.attendees-section h3 {
+    color: #188f98;
+    margin-bottom: 15px;
+}
+
+.attendees-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.attendees-list li {
+    background: #f8f8f8;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button, .edit-button, .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+    width: 120px;  /* Set fixed width for all buttons */
+    text-align: center;  /* Center the text */
+}
+
+button[value="attend"] {
+    background-color: #188f98;
+    color: white;
+}
+
+button[value="unattend"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    display: inline-block;  /* Needed for width to work on anchor tag */
+}
+
+.delete-button {
+    background-color: #c42956;
+    color: white;
+    text-decoration: none;
+    display: inline-block;  /* Needed for width to work on anchor tag */
+}
+
+button:hover, .edit-button:hover, .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+

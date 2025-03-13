@@ -1,15 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
-    margin-right: 10px;
-}
-
+/* Container styling */
 .container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 h1, h2 {
@@ -23,3 +22,60 @@ ul {
 li {
     margin-bottom: 10px;
 }
+
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.event-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.event-card {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.event-card .btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: none;  /* Hide the original button */
+}
+
+.event-title {
+    font-size: 1.2em;
+    color: #188f98;
+    margin-bottom: 10px;
+}
+
+.event-info {
+    color: #666;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.event-description {
+    color: #141414;
+    font-size: 1em;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+

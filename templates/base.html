@@ -5,17 +5,28 @@
     <meta charset="UTF-8">
     <title>{% block title %}Event App{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navigation_bar.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
+
 <body>
 <nav>
-    <a href="{% url 'events:event_list' %}">Home</a>
+    <a href="{% url 'events:event_list' %}">Home<br>Kāinga</a>
     {% if user.is_authenticated %}
-    <a href="{% url 'events:create_event' %}">Create Event</a>
-    <a href="{% url 'users:personal_center' %}">Personal Center</a>
-    <a href="{% url 'users:logout' %}">Logout</a>
+        <a href="{% url 'events:create_event' %}">Create Event<br>Waihanga Hui</a>
+    <div class="right-buttons">
+        <a href="{% url 'users:personal_center' %}" >Personal Center<br>Whārangi Whaiaro</a>
+        <a href="{% url 'users:logout' %}" >Logout<br>Takiputa</a>
+    </div>
     {% else %}
-    <a href="{% url 'users:login' %}">Login</a>
-    <a href="{% url 'users:register' %}">Sign Up</a>
+        <div class="right-buttons">
+            {% block nav_login %}
+                <a href="{% url 'users:login' %}" >Login<br>Takiuru</a>
+            {% endblock %}
+            {% block nav_register %}
+                <a href="{% url 'users:register' %}" >Sign Up<br>Whakauru</a>
+            {% endblock %}
+        </div>
     {% endif %}
 </nav>
 
@@ -23,7 +34,7 @@
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
 {% endif %}

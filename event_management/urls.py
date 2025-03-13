@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('events/', include('events.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    # Include custom CKEditor URLs instead of the default ones
+    path('ckeditor/', include('event_management.ckeditor_custom_urls')),
     path('', event_views.event_list, name='index'),  # Index route points to event_list
 ]
 

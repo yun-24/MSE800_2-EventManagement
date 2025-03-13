@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .forms import EventForm
+from .models import Event
+
 
 # Create your views here.
-
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Event
-from django.contrib.auth.decorators import login_required
-from .forms import EventForm
 
 
 def event_list(request):
@@ -57,3 +58,19 @@ def edit_event(request, pk):
     return render(request, 'events/edit_event.html', {'form': form, 'event': event})
 
 
+@login_required
+def delete_event(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+
+    # Check if the user is a staff member (admin)
+    if not request.user.is_staff:
+        messages.error(request, 'You do not have permission to delete events.')
+        return redirect('events:event_detail', pk=event.pk)
+
+    if request.method == 'POST':
+        event.delete()
+        messages.success(request, 'Event deleted successfully.')
+        return redirect('events:event_list')
+
+    # redirect back to event detail page
+    return redirect('events:event_detail', pk=event.pk)

@@ -24,8 +24,8 @@ SECRET_KEY = 'django-insecure-5pw7_dw_!m_#&dbmj(qh)6nrmk&p5d5w6qjxe-1_1f!0^2x#=q
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+STATIC_ROOT="build"
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,9 @@ INSTALLED_APPS = [
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_RESTRICT_BY_USER = True  # Restrict each user to only see their own uploads
+CKEDITOR_ALLOW_NONIMAGE_FILES = False  # Restricts uploads to images only
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
